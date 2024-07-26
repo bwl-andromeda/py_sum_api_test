@@ -1,0 +1,16 @@
+[Unit]
+Description=Systemd Unit app - FastAPI
+After=network.target
+
+[Service]
+Type=forking
+User=torchhik
+Group=torchhik
+WorkingDirectory=/home/torchhik/rep/testovoe/py_sum_api_test
+Environment="test_var=bwl-andromeda"
+ExecStart=/home/torchhik/rep/testovoe/py_sum_api_test/unit.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

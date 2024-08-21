@@ -30,7 +30,14 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME}}/test:latest
+        tags: ${{ secrets.DOCKER_USERNAME}}/test
     -
       name: Exit out from Docker hub
-      run: docker logout
+      run: |
+        docker logout
+        if [ $? -eq 0 ]; then
+          echo "Logout successful"
+        else
+          echo "Logout failed"
+          exit 1
+        fi
